@@ -18,6 +18,22 @@
         <slf4j.version>1.7.30</slf4j.version>
     </properties>
 
+    <repositories>
+        <!--部分的依赖 ,暂时从apache snapshot下载-->
+        <repository>
+            <id>apache-snapshots</id>
+            <name>apache snapshots</name>
+            <url>https://repository.apache.org/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
+    <!--如果flinkJDBC 依赖拉不下来 导入这个-->
+    <!--    <mirror>-->
+    <!--        <id>aliyunmaven</id>-->
+    <!--        <mirrorOf>*,!apache-snapshots</mirrorOf>-->
+    <!--        <name>阿里云公共仓库</name>-->
+    <!--        <url>https://maven.aliyun.com/repository/public</url>-->
+    <!--    </mirror>-->
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-streaming-scala -->
         <dependency>
@@ -72,9 +88,29 @@
             <artifactId>flink-connector-datagen</artifactId>
             <version>${flink.version}</version>
         </dependency>
+
+        <!-- mysql JDBC驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.27</version>
+        </dependency>
+        <!-- flink jdbc-->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-jdbc</artifactId>
+            <version>1.17-SNAPSHOT</version>
+        </dependency>
+        <!-- flink elasticsearch Sink-->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-elasticsearch7</artifactId>
+            <version>3.0.1-1.17</version>
+        </dependency>
+
     </dependencies>
 
-<!--    打包插件-->
+    <!--    打包插件-->
     <build>
         <plugins>
             <plugin>

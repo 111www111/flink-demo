@@ -1,4 +1,4 @@
-package com.wyt.source;
+package com.wyt.entity;
 
 import java.util.Objects;
 

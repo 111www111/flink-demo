@@ -1,6 +1,6 @@
 package com.wyt.aggreagte;
 
-import com.wyt.source.WaterSensor;
+import com.wyt.entity.WaterSensor;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
