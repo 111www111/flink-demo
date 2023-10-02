@@ -3,10 +3,10 @@ package com.wyt.sink;
 
 import com.wyt.entity.WaterSensor;
 import com.wyt.mapfunc.WaterSensorMapFunctionImpl;
-import org.apache.flink.connector.jdbc.JdbcConnectionOptions;
-import org.apache.flink.connector.jdbc.JdbcExecutionOptions;
-import org.apache.flink.connector.jdbc.JdbcSink;
-import org.apache.flink.connector.jdbc.JdbcStatementBuilder;
+//import org.apache.flink.connector.jdbc.JdbcConnectionOptions;
+//import org.apache.flink.connector.jdbc.JdbcExecutionOptions;
+//import org.apache.flink.connector.jdbc.JdbcSink;
+//import org.apache.flink.connector.jdbc.JdbcStatementBuilder;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -67,26 +67,26 @@ public class SinkToMysql {
          *    第三个参数： 执行选项 ---》 攒批、重试
          *    第四个参数： 连接选项 ---》 url、用户名、密码
          */
-        SinkFunction<WaterSensor> mysqlSink = JdbcSink.sink(
-                "insert into ws values(?,?,?)",
-                (PreparedStatement preparedStatement, WaterSensor waterSensor) -> {
-                    preparedStatement.setString(1, waterSensor.getId());
-                    preparedStatement.setLong(2, waterSensor.getTs());
-                    preparedStatement.setInt(3, waterSensor.getVc());
-                },
-                JdbcExecutionOptions.builder()
-                        .withMaxRetries(3) // 重试次数
-                        .withBatchSize(100) // 批次的大小：条数
-                        .withBatchIntervalMs(3000) // 批次的时间
-                        .build(),
-                new JdbcConnectionOptions.JdbcConnectionOptionsBuilder()
-                        .withUrl(jdbcUrl)
-                        .withUsername(username)
-                        .withPassword(pwd)
-                        .withConnectionCheckTimeoutSeconds(60) // 重试的超时时间
-                        .build()
-        );
-        waterSensorSource.addSink(mysqlSink);
+//        SinkFunction<WaterSensor> mysqlSink = JdbcSink.sink(
+//                "insert into ws values(?,?,?)",
+//                (PreparedStatement preparedStatement, WaterSensor waterSensor) -> {
+//                    preparedStatement.setString(1, waterSensor.getId());
+//                    preparedStatement.setLong(2, waterSensor.getTs());
+//                    preparedStatement.setInt(3, waterSensor.getVc());
+//                },
+//                JdbcExecutionOptions.builder()
+//                        .withMaxRetries(3) // 重试次数
+//                        .withBatchSize(100) // 批次的大小：条数
+//                        .withBatchIntervalMs(3000) // 批次的时间
+//                        .build(),
+//                new JdbcConnectionOptions.JdbcConnectionOptionsBuilder()
+//                        .withUrl(jdbcUrl)
+//                        .withUsername(username)
+//                        .withPassword(pwd)
+//                        .withConnectionCheckTimeoutSeconds(60) // 重试的超时时间
+//                        .build()
+//        );
+//        waterSensorSource.addSink(mysqlSink);
         //执行
         env.execute();
     }

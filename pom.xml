@@ -96,11 +96,11 @@
             <version>8.0.27</version>
         </dependency>
         <!-- flink jdbc-->
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-jdbc</artifactId>
-            <version>1.17-SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.flink</groupId>-->
+<!--            <artifactId>flink-connector-jdbc</artifactId>-->
+<!--            <version>1.17-SNAPSHOT</version>-->
+<!--        </dependency>-->
         <!-- flink elasticsearch Sink-->
         <dependency>
             <groupId>org.apache.flink</groupId>
